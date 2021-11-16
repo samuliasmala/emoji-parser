@@ -1,3 +1,5 @@
+var DEBUG = process.env.EMOJI_DEBUG;
+var downloads = 0;
 var fetchImage, fetchImages, fs, headers, https, wrench;
 (https = require('https')),
   (fs = require('fs')),
@@ -11,7 +13,9 @@ var fetchImage, fetchImages, fs, headers, https, wrench;
         var req;
         return bool
           ? cb(name)
-          : ((req = https.get(
+          : (DEBUG && console.log('Downloading ' + name),
+            downloads++,
+            (req = https.get(
               {
                 hostname: 'raw.githubusercontent.com',
                 path: '/samuliasmala/emoji-cheat-sheet.com/master/' + path,
@@ -53,6 +57,8 @@ var fetchImage, fetchImages, fs, headers, https, wrench;
       return console.error('emoji-parser: GitHub: ' + images.message), cb([]);
     for (
       amount = images.length,
+        DEBUG &&
+          console.log('Checking local cache for ' + amount + ' emoji images'),
         list = [],
         done = function (name) {
           return (
@@ -77,6 +83,10 @@ var fetchImage, fetchImages, fs, headers, https, wrench;
       '/' !== dir[dir.length - 1] && (dir += '/'),
       remain || wrench.rmdirSyncRecursive(dir, !0),
       wrench.mkdirSyncRecursive(dir),
+      DEBUG &&
+        console.log(
+          'Getting emoji-list from samuliasmala/emoji-cheat-sheet.com repository'
+        ),
       (req = https.get(
         {
           hostname: 'api.github.com',
@@ -94,6 +104,10 @@ var fetchImage, fetchImages, fs, headers, https, wrench;
             }),
             res.on('end', function () {
               return fetchImages(dir, JSON.parse(data), function (images) {
+                downloads &&
+                  console.log(
+                    downloads + ' emoji images downloaded by emoji-parser'
+                  );
                 return cb(null, images);
               });
             })
