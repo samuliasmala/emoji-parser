@@ -1,3 +1,7 @@
+This is a "fork" of https://github.com/frissdiegurke/emoji-parser. Since the original repository has disappeared, the files in this repository are from the npm package. They were uglified so running them through prettier helped a bit but not much.
+
+---
+
 # emoji-parser for node.js and bower
 
 ## About

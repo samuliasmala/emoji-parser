@@ -1,11 +1,11 @@
 {
-  "name": "emoji-parser",
+  "name": "@asmala/emoji-parser",
   "license": "MIT",
-  "description": "Emoji Parser for node.js based on www.Emoji-Cheat-Sheet.com",
-  "version": "0.1.2",
+  "description": "Emoji Parser for Node.js based on www.Emoji-Cheat-Sheet.com",
+  "version": "0.2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/frissdiegurke/emoji-parser"
+    "url": "https://github.com/samuliasmala/emoji-parser"
   },
   "main": "app.js",
   "keywords": [
@@ -14,8 +14,8 @@
     "smileys"
   ],
   "author": {
-    "name": "FrissDieGurke",
-    "email": "frissdiegurke@hotmail.com",
-    "url": "https://github.com/frissdiegurke/"
+    "name": "Samuli Asmala",
+    "email": "samuli.asmala@gmail.com",
+    "url": "https://github.com/samuliasmala"
   }
 }
