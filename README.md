@@ -108,21 +108,28 @@ The return-value will replace the emoji-occurrence.
 
 #### node.js
 
-    var emoji = require('emoji-parser');
+```js
+var emoji = require("emoji-parser");
 
-    // keep emoji-images in sync with the official repository
-    emoji.init().update();
+// keep emoji-images in sync with the official repository
+emoji.init().update();
 
-    // calls to http://example.com/emoji/images/*.png should resolve to path/to/node_modules/emoji-parser/emoji/*.png
-    emoji.parse('This is a :telephone: :smiley[:D]:', 'http://example.com/emoji/images');
-    // This is a <img class="emoji" src="http://example.com/emoji/images/telephone.png" title="telephone" alt=":telephone:" /> <img class="emoji" src="http://example.com/emoji/images/smiley.png" title=":D (smiley)" alt=":smiley[:D]:" />
+// calls to http://example.com/emoji/images/*.png should resolve to path/to/node_modules/emoji-parser/emoji/*.png
+emoji.parse(
+  "This is a :telephone: :smiley[:D]:",
+  "http://example.com/emoji/images"
+);
+// This is a <img class="emoji" src="http://example.com/emoji/images/telephone.png" title="telephone" alt=":telephone:" /> <img class="emoji" src="http://example.com/emoji/images/smiley.png" title=":D (smiley)" alt=":smiley[:D]:" />
+```
 
 #### bower
 
-    var emoji = require ? require('emoji-parser') : window.emojiParser;
+```js
+var emoji = require ? require("emoji-parser") : window.emojiParser;
 
-    emoji('This is a :telephone: :smiley[:D]:', 'http://example.com/emoji/images');
-    // This is a <img class="emoji" src="http://example.com/emoji/images/telephone.png" title="telephone" alt=":telephone:" /> <img class="emoji" src="http://example.com/emoji/images/smiley.png" title=":D (smiley)" alt=":smiley[:D]:" />
+emoji("This is a :telephone: :smiley[:D]:", "http://example.com/emoji/images");
+// This is a <img class="emoji" src="http://example.com/emoji/images/telephone.png" title="telephone" alt=":telephone:" /> <img class="emoji" src="http://example.com/emoji/images/smiley.png" title=":D (smiley)" alt=":smiley[:D]:" />
+```
 
 ## Installation
 
