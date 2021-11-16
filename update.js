@@ -14,7 +14,7 @@ var fetchImage, fetchImages, fs, headers, https, wrench;
           : ((req = https.get(
               {
                 hostname: 'raw.githubusercontent.com',
-                path: '/WebpageFX/emoji-cheat-sheet.com/master/' + path,
+                path: '/samuliasmala/emoji-cheat-sheet.com/master/' + path,
                 headers: headers,
               },
               function (res) {
@@ -81,7 +81,7 @@ var fetchImage, fetchImages, fs, headers, https, wrench;
         {
           hostname: 'api.github.com',
           path:
-            '/repositories/2592600/contents/public/graphics/emojis' +
+            '/repos/samuliasmala/emoji-cheat-sheet.com/contents/public/graphics/emojis' +
             (null != token ? '?access_token=' + token : ''),
           headers: headers,
         },
