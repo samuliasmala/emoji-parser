@@ -17,8 +17,5 @@
     "name": "FrissDieGurke",
     "email": "frissdiegurke@hotmail.com",
     "url": "https://github.com/frissdiegurke/"
-  },
-  "dependencies": {
-    "wrench": "~1.5.8"
   }
 }

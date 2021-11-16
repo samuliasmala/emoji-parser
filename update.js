@@ -1,9 +1,8 @@
 var DEBUG = process.env.EMOJI_DEBUG;
 var downloads = 0;
-var fetchImage, fetchImages, fs, headers, https, wrench;
+var fetchImage, fetchImages, fs, headers, https;
 (https = require('https')),
   (fs = require('fs')),
-  (wrench = require('wrench')),
   (headers = { 'User-Agent': 'frissdiegurke/emoji-parser' }),
   (fetchImage = function (target, path, name, cb) {
     var file;
@@ -81,8 +80,8 @@ var fetchImage, fetchImages, fs, headers, https, wrench;
     return (
       'function' == typeof token && ((cb = token), (token = null)),
       '/' !== dir[dir.length - 1] && (dir += '/'),
-      remain || wrench.rmdirSyncRecursive(dir, !0),
-      wrench.mkdirSyncRecursive(dir),
+      remain || fs.rmSync(dir, { recursive: true }),
+      fs.mkdirSync(dir, { recursive: true }),
       DEBUG &&
         console.log(
           'Getting emoji-list from samuliasmala/emoji-cheat-sheet.com repository'
