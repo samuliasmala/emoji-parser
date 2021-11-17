@@ -1,5 +1,6 @@
 var DEBUG = process.env.EMOJI_DEBUG;
 var downloads = 0;
+var cache = 0;
 var fetchImage, fetchImages, fs, headers, https;
 (https = require('https')),
   (fs = require('fs')),
@@ -11,7 +12,7 @@ var fetchImage, fetchImages, fs, headers, https;
       fs.exists(file, function (bool) {
         var req;
         return bool
-          ? cb(name)
+          ? (cache++, cb(name))
           : (DEBUG && console.log('Downloading ' + name),
             downloads++,
             (req = https.get(
@@ -57,7 +58,7 @@ var fetchImage, fetchImages, fs, headers, https;
     for (
       amount = images.length,
         DEBUG &&
-          console.log('Checking local cache for ' + amount + ' emoji images'),
+          console.log(amount + ' emojis found from repository'),
         list = [],
         done = function (name) {
           return (
@@ -84,7 +85,7 @@ var fetchImage, fetchImages, fs, headers, https;
       fs.mkdirSync(dir, { recursive: true }),
       DEBUG &&
         console.log(
-          'Getting emoji-list from samuliasmala/emoji-cheat-sheet.com repository'
+          'Getting emoji list from samuliasmala/emoji-cheat-sheet.com repository'
         ),
       (req = https.get(
         {
@@ -107,6 +108,8 @@ var fetchImage, fetchImages, fs, headers, https;
                   console.log(
                     downloads + ' emoji images downloaded by emoji-parser'
                   );
+                DEBUG &&
+                  console.log(cache + ' emoji images found from local cache');
                 return cb(null, images);
               });
             })
